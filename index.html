@@ -5,21 +5,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Counter del proceso">
         <meta name="author" content="EatonRD">
-        <link rel="icon" href="#">
+        <link rel="icon" href="Img/icon.png">
 
         <title>Contador del proceso</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="css/MisEstilos.css"> -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
     <style>
         .size {
             font-size: 250px;
         }
+
+        /*botón up*/
+        .ir-arriba{
+            display: none;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            position: fixed;
+            right: 70px;
+            bottom:70px;
+            box-shadow: rgb(41, 41, 41);
+            z-index: 999999999;
+            transition: ease 1s;
+        }
+        /*evento hover*/
+        .ir-arriba:hover{
+            box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            transition: ease .5s;
+        }
+        /*estilos para el tag i*/
+        .ir-arriba i{
+            color: black;
+            font-size: 2em;
+            padding: 20px;
+            transition: ease 2s;
+        }   
+        .ir-arriba i:hover{
+            -ms-transform: rotate(-90deg); /* IE 9 */
+            -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+            transform: rotate(-deg);
+            transition: ease 1s;
+        }   
+
+
     
     </style>
     <body>
+        <a href="Login.html" class="ir-arriba" style="display: inline;">
+            <i class="fas fa-cog fa-5x" aria-hidden="true"></i>
+        </a>  
         <header class="container-fluid bg-light">
             <div class="row d-flex justify-content-around p-3">
                 <div class="col-md-6">
@@ -30,6 +68,7 @@
                 </div>
             </div>
         </header>
+        
         <section id="Tipo" class="container">
             <div class="row d-flex justify-content-around pt-5">
                 <div class="col-md-6 text-center">
@@ -44,6 +83,7 @@
             <div id="countdownExample" class="display-1 d-flex justify-content-center py-1">
                 <div class="values size"></div>
             </div>
+                
         </section>
         
     </body>

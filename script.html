@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>On mouse Click</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+
+        
+            var num = 0;
+
+            $("#number").html(num);
+
+            $(document).on('click','body *',function(){
+                num++;
+                $('#number').empty();
+                $("#number").html(num);
+            });
+
+            $(document).contextmenu(function() {
+                num--;
+                $('#number').empty();
+                $("#number").html(num);
+            });
+
+        });
+
+    </script>
+
+    <style>
+        .fullcanvas {
+            margin: 0px;
+            height: 800px;
+            width: 100%;
+        }
+
+        #number{
+            text-align: center;
+            padding: 30px;
+            font-size: 200px;
+        }
+
+        .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+        }
+    </style>
+
+</head>
+<body oncontextmenu="return false;">
+
+    <h1 id="number" class="fullcanvas noselect"></h1>
+    
+</body>
+</html>

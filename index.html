@@ -16,17 +16,17 @@
     </head>
     <style>
         .size {
-            font-size: 250px;
+            font-size: 150px;
         }
 
         /*botón up*/
         .ir-arriba{
             display: none;
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.05);
             border-radius: 50%;
             position: fixed;
-            right: 70px;
-            bottom:70px;
+            right: 10px;
+            bottom:10px;
             box-shadow: rgb(41, 41, 41);
             z-index: 999999999;
             transition: ease 1s;
@@ -51,15 +51,28 @@
             transition: ease 1s;
         }   
 
+        .full {        
+            font-size: 240px;
+        }
+
+        .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+        }
 
     
     </style>
-    <body>
+    <body oncontextmenu="return false;">
         <a href="Login.html" class="ir-arriba" style="display: inline;">
             <i class="fas fa-cog fa-5x" aria-hidden="true"></i>
         </a>  
-        <header class="container-fluid bg-light">
-            <div class="row d-flex justify-content-around p-3">
+        <header class="container-fluid bg-light px-5 noselect">
+            <div class="row d-flex justify-content-between mx-5 px-5">
                 <div class="col-md-6">
                     <h1 class="display-1 text-center">Tipo:</h1>
                 </div>
@@ -69,19 +82,19 @@
             </div>
         </header>
         
-        <section id="Tipo" class="container">
+        <section id="Tipo" class="container noselect">
             <div class="row d-flex justify-content-around pt-5">
                 <div class="col-md-6 text-center">
                     <h1 class="display-1">Planing</h1>
-                    <p class="py-5 display-1">#####</p>
+                    <p class="py-5 display-1 bg-success text-white size noselect" id="planing">0</p>
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-6 text-center" >
                     <h1 class="display-1">Actual</h1>
-                    <p class="py-5 display-1 bg-success text-white">###</p>
+                    <p class="py-5 display-1 bg-danger text-white size noselect" id="number"></p>
                 </div>
             </div>
             <div id="countdownExample" class="display-1 d-flex justify-content-center py-1">
-                <div class="values size"></div>
+                <div class="values full"></div>
             </div>
                 
         </section>
@@ -93,6 +106,7 @@
     
     <script>
         var timer = new Timer();
+        var planing = 0;
         timer.start({countdown: true, startValues: {seconds: 14}});
         $('#countdownExample .values').html(timer.getTimeValues().toString());
         timer.addEventListener('secondsUpdated', function (e) {
@@ -100,7 +114,33 @@
         });
         timer.addEventListener('targetAchieved', function (e) {
             timer.reset();
+            planing++;
+                $('#planing').empty();
+                $("#planing").html(planing);
+            // $('#countdownExample .values').getDocumentById(planing)++
         });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            var num = 0;
+
+            $("#number").html(num);
+
+            $(document).on('click','body',function(){
+                num++;
+                $('#number').empty();
+                $("#number").html(num);
+            });
+
+            $(document).contextmenu(function() {
+                num--;
+                $('#number').empty();
+                $("#number").html(num);
+            });
+
+        });
+
     </script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </html>
